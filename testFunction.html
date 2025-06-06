@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Functions Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .demo-section {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .demo-section h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        button {
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px 0;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .output {
+            padding: 10px;
+            background-color: #f5f5f5;
+            border-radius: 4px;
+            margin-top: 10px;
+            min-height: 20px;
+        }
+        .dynamic-element {
+            background-color: #e6f7ff;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+<h1>JavaScript Functions Demo</h1>
+<p>This page demonstrates various JavaScript functions loaded from an external file.</p>
+
+<!-- Section 1: Basic Function Demos -->
+<div class="demo-section" id="basic-functions">
+    <h2>1. Basic Functions</h2>
+
+    <div>
+        <h3>Greet User</h3>
+        <button onclick="alert(greetUser(prompt('Enter your name:')))">
+            Run greetUser()
+        </button>
+        <p>This calls greetUser() with your input and shows the result in an alert.</p>
+    </div>
+
+    <div>
+        <h3>Add Numbers</h3>
+        <button onclick="document.getElementById('add-output').textContent =
+                            'Result: ' + addNumbers(5, 7)">
+            Calculate 5 + 7
+        </button>
+        <div id="add-output" class="output">Results will appear here</div>
+    </div>
+</div>
+
+<!-- Section 2: DOM Manipulation -->
+<div class="demo-section" id="dom-manipulation">
+    <h2>2. DOM Manipulation</h2>
+
+    <div>
+        <h3>Change Background Color</h3>
+        <button onclick="changeBackgroundColor('color-demo', '#ffcccc')">
+            Change to Light Red
+        </button>
+        <button onclick="changeBackgroundColor('color-demo', '#ccffcc')">
+            Change to Light Green
+        </button>
+        <button onclick="changeBackgroundColor('color-demo', '#ccccff')">
+            Change to Light Blue
+        </button>
+        <div id="color-demo" style="padding: 15px; margin-top: 10px;">
+            This div's background color will change
+        </div>
+    </div>
+
+    <div>
+        <h3>Create New Elements</h3>
+        <button onclick="createAndAppendElement('element-container', 'div',
+                     'New dynamic element created!', 'dynamic-element')">
+            Add New Element
+        </button>
+        <div id="element-container"></div>
+    </div>
+</div>
+
+<!-- Section 3: Event Handling -->
+<div class="demo-section">
+    <h2>3. Event Handling</h2>
+
+    <div>
+        <h3>Show Date/Time on Button Click</h3>
+        <button id="datetime-btn">Show Current Date/Time</button>
+        <div id="datetime-output" class="output">Click the button to see the current date and time</div>
+    </div>
+</div>
+
+<!-- Section 4: Array Processing -->
+<div class="demo-section">
+    <h2>4. Array Processing</h2>
+
+    <div>
+        <h3>Analyze Array [10, 20, 30, 40, 50]</h3>
+        <button onclick="displayArrayAnalysis()">Analyze Array</button>
+        <div id="array-output" class="output">Click the button to see array analysis</div>
+    </div>
+</div>
+
+<!-- Section 5: Asynchronous Operations -->
+<div class="demo-section">
+    <h2>5. Asynchronous Operations</h2>
+
+    <div>
+        <h3>Fetch Mock Data</h3>
+        <button onclick="fetchDataDemo()">Fetch Data (1 second delay)</button>
+        <button onclick="fetchDataDemo(2000)">Fetch Data (2 second delay)</button>
+        <div id="fetch-output" class="output">Click a button to fetch data</div>
+    </div>
+</div>
+
+<!-- Include the JavaScript file -->
+<script src="js/testFunctions.js"></script>
+
+<!-- Additional script for demo-specific functions -->
+<script>
+    // Initialize event handlers when the page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        // Set up the date/time button handler
+        setupDateTimeButton('datetime-btn', 'datetime-output');
+    });
+
+    // Function to demonstrate array analysis
+    function displayArrayAnalysis() {
+        const numbers = [10, 20, 30, 40, 50];
+        const analysis = analyzeArray(numbers);
+
+        const output = document.getElementById('array-output');
+        output.innerHTML = `
+                <strong>Array:</strong> [${numbers.join(', ')}]<br>
+                <strong>Sum:</strong> ${analysis.sum}<br>
+                <strong>Average:</strong> ${analysis.average}<br>
+                <strong>Min:</strong> ${analysis.min}<br>
+                <strong>Max:</strong> ${analysis.max}
+            `;
+    }
+
+    // Function to demonstrate async data fetching
+    async function fetchDataDemo(delay = 1000) {
+        const output = document.getElementById('fetch-output');
+        output.textContent = `Fetching data... (${delay}ms delay)`;
+
+        try {
+            const data = await fetchMockData(delay);
+            output.textContent = data;
+        } catch (error) {
+            output.textContent = `Error: ${error.message}`;
+        }
+    }
+</script>
+</body>
+</html>
