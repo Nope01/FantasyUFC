@@ -36,3 +36,8 @@ body {
         }
     }
 }
+
+.main {
+    background: #da8181;
+    text-align: center;
+}

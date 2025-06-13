@@ -8,13 +8,13 @@ async function displayFighter(buttonId, outputId) {
     }
 
     button.addEventListener('click', async () => {
-        const fighter = await fetchData("http://localhost:8080/ufc/fighter/1");
-        const fighters = await fetchData("http://localhost:8080/ufc/fighters");
+        //const fighter = await fetchData("http://localhost:8080/ufc/fighter/1");
+        //const fighters = await fetchData("http://localhost:8080/ufc/fighters");
 
-        console.log(fighter.name);
-        output.textContent = fighter.name;
+        //console.log(fighter.name);
+        output.textContent = "Bingus";
 
-        console.log(fighters[0]);
+        //console.log(fighters[0]);
     });
 }
 
