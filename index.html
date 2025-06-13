@@ -14,22 +14,31 @@
 <body>
 <div class="header">
 
-<h1>
-    <a href="index.html">Fantasy UFC</a>
-</h1>
+    <h1>
+        <a href="index.html">Fantasy UFC</a>
+    </h1>
 
-    <ul class ="header-nav" id=class>
-        <li>
-            <a href="#">Your picks</a>
-        </li>
-        <li>
-            <a href="#">Last fight stats</a>
-        </li>
+        <ul class ="header-nav" id=class>
+            <li>
+                <a href="#">Your picks</a>
+            </li>
+            <li>
+                <a href="#">Last fight stats</a>
+            </li>
 
-        <li>
-            <a href="#">Current scores</a>
-        </li>
-    </ul>
+            <li>
+                <a href="#">Current scores</a>
+            </li>
+        </ul>
+</div>
+
+<div class="main">
+    <button id="fighter-button">Press for latest fight</button>
+    <div id="fighter-output" class="output"> Fighter goes here</div>
+
+</div>
+
+<div id="fighters-container">
 
 </div>
 
@@ -37,5 +46,13 @@
 </body>
 
 <script src="js/index.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Set up the date/time button handler
+        displayFighter('fighter-button', 'fighter-output');
+    });
+</script>
+
 
 </html>
